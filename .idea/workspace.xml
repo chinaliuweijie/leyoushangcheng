@@ -2,31 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f542914-f9c3-423b-9ddd-1e90eb12cc68" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leyou-common/src/main/java/com/leyou/common/pojo/PageResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leyou-gateway/src/main/java/com/leyou/config/LeyouCorsConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leyou-item/layout-item-service/src/main/java/com/leyou/item/controller/BrandController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leyou-item/layout-item-service/src/main/java/com/leyou/item/controller/CategoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leyou-item/layout-item-service/src/main/java/com/leyou/item/mapper/BrandMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leyou-item/layout-item-service/src/main/java/com/leyou/item/mapper/CategoryMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leyou-item/layout-item-service/src/main/java/com/leyou/item/service/BrandService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leyou-item/layout-item-service/src/main/java/com/leyou/item/service/CategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leyou-item/leyou-item-interface/src/main/java/com/leyou/item/poji/Brand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leyou-item/leyou-item-interface/src/main/java/com/leyou/item/poji/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leyou-common/leyou-common.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/leyou-gateway/leyou-gateway.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/leyou-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/leyou-gateway/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leyou-gateway/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/leyou-gateway/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leyou-item/layout-item-service/layout-item-service.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/leyou-item/layout-item-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/leyou-item/layout-item-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leyou-item/layout-item-service/src/main/java/com/leyou/LeyouItemServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/leyou-item/layout-item-service/src/main/java/com/leyou/LeyouItemServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leyou-item/layout-item-service/target/classes/com/leyou/LeyouItemServiceApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/leyou-item/layout-item-service/target/classes/com/leyou/LeyouItemServiceApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leyou-item/leyou-item-interface/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/leyou-item/leyou-item-interface/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leyou-item/leyou-item.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/leyou.iml" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -81,8 +57,8 @@
       <file leaf-file-name="BrandService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/leyou-item/layout-item-service/src/main/java/com/leyou/item/service/BrandService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="53">
-              <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+            <state relative-caret-position="163">
+              <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -531,16 +507,15 @@
       <workItem from="1565164544170" duration="4716000" />
       <workItem from="1565426445258" duration="2737000" />
       <workItem from="1565430556376" duration="2223000" />
-      <workItem from="1565575986969" duration="15777000" />
+      <workItem from="1565575986969" duration="15967000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34174000" />
+    <option name="totallyTimeSpent" value="34364000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -1122,8 +1097,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/leyou-item/layout-item-service/src/main/java/com/leyou/item/service/BrandService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="53">
-          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+        <state relative-caret-position="163">
+          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
