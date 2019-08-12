@@ -9,6 +9,7 @@
         <module name="layout-item-service" />
         <module name="leyou-common" />
         <module name="leyou-gateway" />
+        <module name="leyou-item-interface" />
         <module name="leyou-registry" />
         <module name="leyouiteminterface" />
       </profile>

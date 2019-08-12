@@ -22,6 +22,13 @@
         千万不能忘了，我们自己也需要ly-item-interface中的实体类-->
 
     <dependencies>
+        <dependency>
+            <groupId>com.leyou.common</groupId>
+            <artifactId>leyou-common</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+
+
         <!-- web启动器 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -68,6 +75,8 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+
+
     </dependencies>
 
 
