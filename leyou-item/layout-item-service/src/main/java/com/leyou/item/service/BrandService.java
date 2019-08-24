@@ -58,7 +58,7 @@ public class BrandService {
     /**
      * 新增品牌
      *
-     * @param brand
+     * @param brand Transactional 事物注解
      * @param cids
      */
     @Transactional
@@ -71,5 +71,13 @@ public class BrandService {
         cids.forEach(cid -> {
             this.brandMapper.insertBrandAndCategory(cid, brand.getId());
         });
+    }
+
+
+
+
+    public List<Brand> queryBrandsByCid(Long cid) {
+
+        return this.brandMapper.selectBrandByCid(cid);
     }
 }
