@@ -9,7 +9,7 @@ import java.util.List;
 
 @RequestMapping("category")
 public interface CategoryApi {
- 
+
     @GetMapping("names")
-    List<String> queryNameByIds(@RequestParam("ids") List<Long> ids);
+    List<String> queryNamesByIds(@RequestParam("ids") List<Long> ids);
 }

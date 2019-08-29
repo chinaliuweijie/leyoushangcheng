@@ -6,9 +6,13 @@ spring:
   data:
     elasticsearch:
       cluster-name: elasticsearch
-      cluster-nodes: 192.168.56.101:9300
+      cluster-nodes: 192.168.121.132:9300
+      repositories:
+        enabled: true
   main:
     allow-bean-definition-overriding: true
+  jackson:
+    default-property-inclusion: non_null
 eureka:
   client:
     service-url:
@@ -16,3 +20,6 @@ eureka:
   instance:
     lease-renewal-interval-in-seconds: 5 # 每隔5秒发送一次心跳
     lease-expiration-duration-in-seconds: 10 # 10秒不发送就过期
+ribbon:
+  eureka:
+    enabled: true
