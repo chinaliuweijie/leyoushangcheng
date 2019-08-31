@@ -14,11 +14,14 @@ import com.leyou.search.pojo.SearchResult;
 import com.leyou.search.reponsitory.GoodsRepository;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
+import org.elasticsearch.index.query.MatchQueryBuilder;
 import org.elasticsearch.index.query.Operator;
+import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.aggregations.Aggregation;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
 import org.elasticsearch.search.aggregations.bucket.terms.LongTerms;
+import org.elasticsearch.search.aggregations.bucket.terms.StringTerms;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -195,8 +198,10 @@ public class SearchService {
         // 构建查询条件
         NativeSearchQueryBuilder queryBuilder = new NativeSearchQueryBuilder();
 
+        // 添加查询条件
+        MatchQueryBuilder basicQuery = QueryBuilders.matchQuery("all", request.getKey()).operator(Operator.AND);
         // 1、对key进行全文检索查询
-        queryBuilder.withQuery(QueryBuilders.matchQuery("all", key).operator(Operator.AND));
+        queryBuilder.withQuery(basicQuery);
 
         // 2、通过sourceFilter设置返回的结果字段,我们只需要id、skus、subTitle
         queryBuilder.withSourceFilter(new FetchSourceFilter(
@@ -233,11 +238,60 @@ public class SearchService {
         //3.3 品牌的聚合结果
         List<Brand> brands = getBrandAggResult(pageInfo.getAggregation(brandAggName));
 
+        // 判断分类聚合的结果集大小，等于1则聚合
+        List<Map<String, Object>> specs = null;
+        if (categories.size() == 1) {
+            specs = getParamAggResult((Long)categories.get(0).get("id"), basicQuery);
+        }
+
         // 封装成需要的返回结果集
-        return new SearchResult(pageInfo.getContent(), pageInfo.getTotalElements(), (long) pageInfo.getTotalPages(), categories, brands);
+        return new SearchResult(pageInfo.getContent(), pageInfo.getTotalElements(), (long) pageInfo.getTotalPages(), categories, brands,specs);
     }
 
+    /**
+     * 聚合出规格参数过滤条件
+     * @param id
+     * @param basicQuery
+     * @return
+     */
+    private List<Map<String,Object>> getParamAggResult(Long id, QueryBuilder basicQuery) {
 
+        // 创建自定义查询构建器
+        NativeSearchQueryBuilder queryBuilder = new NativeSearchQueryBuilder();
+        // 基于基本的查询条件，聚合规格参数
+        queryBuilder.withQuery(basicQuery);
+        // 查询要聚合的规格参数
+        List<TbSpecParam> params = this.specificationClient.queryParams(null, id, null, true);
+        // 添加聚合
+        params.forEach(param -> {
+            queryBuilder.addAggregation(AggregationBuilders.terms(param.getName()).field("specs." + param.getName() + ".keyword"));
+        });
+        // 只需要聚合结果集，不需要查询结果集
+        queryBuilder.withSourceFilter(new FetchSourceFilter(new String[]{}, null));
+
+        // 执行聚合查询
+        AggregatedPage<Goods> goodsPage = (AggregatedPage<Goods>)this.goodsRepository.search(queryBuilder.build());
+
+        // 定义一个集合，收集聚合结果集
+        List<Map<String, Object>> paramMapList = new ArrayList<>();
+        // 解析聚合查询的结果集
+        Map<String, Aggregation> aggregationMap = goodsPage.getAggregations().asMap();
+        for (Map.Entry<String, Aggregation> entry : aggregationMap.entrySet()) {
+            Map<String, Object> map = new HashMap<>();
+            // 放入规格参数名
+            map.put("k", entry.getKey());
+            // 收集规格参数值
+            List<Object> options = new ArrayList<>();
+            // 解析每个聚合
+            StringTerms terms = (StringTerms)entry.getValue();
+            // 遍历每个聚合中桶，把桶中key放入收集规格参数的集合中
+            terms.getBuckets().forEach(bucket -> options.add(bucket.getKeyAsString()));
+            map.put("options", options);
+            paramMapList.add(map);
+        }
+
+        return paramMapList;
+    }
 
     /**
      * 解析品牌聚合结果集
@@ -272,7 +326,7 @@ public class SearchService {
     private List<Map<String,Object>> getCategoryAggResult(Aggregation aggregation) {
         // 处理聚合结果集
         LongTerms terms = (LongTerms)aggregation;
-        // 获取所有的分类id桶
+        // 获取所有的分类id桶Aggregation
         List<LongTerms.Bucket> buckets = terms.getBuckets();
         // 定义一个品牌集合，搜集所有的品牌对象
         List<Map<String, Object>> categories = new ArrayList<>();
