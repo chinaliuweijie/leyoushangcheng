@@ -13,6 +13,7 @@
         <module>leyou-common</module>
         <module>leyou-upload</module>
         <module>leyou-search</module>
+        <module>java8-Test</module>
     </modules>
     <packaging>pom</packaging>
 

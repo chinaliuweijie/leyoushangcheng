@@ -16,6 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping
 public class SearchController {
 
+    ThreadLocal<Integer> threadLocal = new ThreadLocal<Integer>(){
+        @Override
+        protected Integer initialValue() {
+            return super.initialValue();
+        }
+    };
+
+
+
     @Autowired
     private SearchService searchService;
 
